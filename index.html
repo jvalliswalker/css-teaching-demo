@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS Demo</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CSS Teaching Demo</h1>
+      <p>
+        So here's a page full of nifty CSS tricks and how to make them. Take a look at each card to learn (or maybe remember 😉) how. 
+      </p>
+      <p>
+        Tip: <span id="hover-over-suggestion"></span> lines with a
+        <span class="hover-for-info" id="blue-tint">blue tint</span>
+        for more info on what it does
+      </p>
+    </header>
+    <section class="columns">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-header">Three Column Rows</h2>
+          <div class="code-description">
+            <div>
+              So this page's display is responsive. At media size 993 and up
+              (most computer screens), it has three columns. The CSS looks like
+              this:
+            </div>
+          </div>
+          <div class="code-box">
+            <pre>
+<span class="inline-comment">/* Container Element */</span>
+.columns {
+  <span class='hover-for-info' id="display-grid-1">display: grid</span>;
+  <span class='hover-for-info' id="grid-template-columns-1">grid-template-columns: 33% 33% 33%</span>;
+  <span class="hover-for-info" id="justify-content-1">justify-content: center</span>;
+  <span class="hover-for-info" id="row-gap-1">row-gap: 15px</span>;
+}</pre>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-header">Smaller Displays</h2>
+          <div class="code-description">
+            <p>
+              In other media sizes though, the display changes. In the 'table'
+              screen range, it has two columns, and on mobile devices it has
+              one.
+            </p>
+            <p>
+              We do this by adding the following to the bottom of the
+              stylesheet:
+            </p>
+          </div>
+          <div class="code-box">
+            <pre>
+<span class="inline-comment">/* Media Queries */</span>
+<span class="hover-for-info" id="media-query-1">@media</span> (<span class='hover-for-info' id='tablet-size'>max-width: 992px</span>) {
+  .columns {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media (<span class='hover-for-info' id='mobile-size'>max-width: 768px</span>) {
+  .columns {
+    grid-template-columns: 100%;
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-header">Box Transition Glow</h2>
+          <div class="code-description">
+            How about that cool on-hover box glow? Transitions and box-shadow my
+            friend...
+          </div>
+          <div class="code-box">
+            <pre>
+<span class="inline-comment">/* Assign a Transition Standard to the Elements in Question */</span>
+<span class='hover-for-info' id="comma-in-combinator">.card, .card-header</span> {
+    <span class='hover-for-info' id="transition">transition:</span> all 0.2s ease-in-out;
+}
+
+<span class="inline-comment">/* Set Up the On-Hover Effect */</span>
+.card:hover,
+<span class='hover-for-info' id="combinator-example-1">.card:hover .card-header</span> {
+  box-shadow: 
+    <span class='hover-for-info' id="box-shadow-inset">inset 0px 0px 8px #pink</span>,
+    <span class='hover-for-info' id="box-shadow-regular">0 0 15px #pink</span>;
+}</pre>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-header">Tooltips pt.1</h2>
+          <div class="code-description">
+            <p>
+              How about those handy
+              <span class="hover-for-info" id="self-referencial"
+                >blue tooltips</span
+              >?
+            </p>
+            <p>
+              This one's a little lengthy, but not too tricky once you
+              understand it
+            </p>
+          </div>
+          <div class="code-box">
+            <pre>
+<span class="inline-comment">/* Set up base class */</span>
+.hover-for-info {
+  <span class='hover-for-info' id="position-relative">position: relative</span>;
+  cursor: pointer;
+  color: #blue;
+}
+
+<span class="inline-comment">/* Add some visual pop */</span>
+.hover-for-info:hover {
+  color: #yellow;
+}
+
+<span class="inline-comment">/* Here's the good stuff */</span>
+.hover-for-info:hover<span class='hover-for-info' id="after-pseudo-element">::after</span> {
+  <span class='hover-for-info' id="position-absolute">position: absolute</span>;
+  background-color: #blue;
+  <span class='hover-for-info' id="tooltip-left">left: 0px</span>;
+  <span class='hover-for-info' id="tooltip-bottom">bottom: 24px</span>;
+  <span class='hover-for-info' id="tooltip-min-width">min-width: 200px</span>;
+  border: 2px white solid;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 80%;
+  <span class='hover-for-info' id="tooltip-z-index">z-index: 1</span>;
+}
+</pre>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-header">Tooltips pt.2</h2>
+          <div class="code-description">
+            <p>
+              Okay, so the setup is done. Now how do we implement?
+            </p>
+          </div>
+          <div class="code-box">
+            <pre>
+<span class="inline-comment">/* In HTML, we write something like this */</span>
+<xmp><span class=</xmp><span class="hover-for-info" id="hover-for-info-tip">"hover-for-info"</span>
+    id=<span class="hover-for-info" id="final-product-tip">"final-product"</span>
+>
+final product</span>
+<xmp></span></xmp>
+<span class="inline-comment">/* Then in CSS we add content via the Id */</span>
+#<span class='hover-for-info' id="final-product-hover-after">final-product:hover::after</span> {
+    <span class="hover-for-info" id="content-hooray">content: 'Hooray!'</span>;
+}
+
+<span class="inline-comment">/* And we get our final product! */</span>
+Here is our <span class='hover-for-info' id="final-product">final product</span>!
+</pre>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-header">Other Tricks/Resources</h2>
+        <div class="code-description">
+          These pretty color-gradient code boxes? Easy-peasy:
+        </div>
+        <div class="code-box">
+          <pre>
+.code-box {
+  <span class='hover-for-info' id="linear-gradient">background-image: linear-gradient( #6B4775, #A055A6 )</span>;
+}</pre>
+        </div>
+<div class="code-description">
+  Getting the card's titles to overlay like this is simple too.
+</div>
+<div class="code-box">
+  <pre>
+.card-header {
+    <span class='hover-for-info' id='negative-top-margin'>margin-top: -19px</span>;
+}</pre>
+</div>
+<div class="code-description">
+    If you want more info, here are some links to in-depth technical explanations on some of these topics:
+  </div>
+<ul>
+    <li>
+      <a
+        href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+        target="_blank"
+        >A Complete Guide to CSS Grids</a
+      >
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators" target="_blank"
+        >CSS Selectors & Combinators</a
+      >
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition" target="_blank">CSS Transitions</a>
+    </li>
+  </ul>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div>
+          <p>Made with a thirst for learning by Jamil Vallis-Walker,</p>
+          <p>based on assignment from UC Berkeley Extension, Web Developer Course</p>
+      </div>
+    </footer>
+  </body>
+</html>

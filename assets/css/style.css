@@ -1,0 +1,361 @@
+:root {
+  --background-blueberry: #333940;
+  --font-color-default-pink: rgb(219, 0, 219);
+  --font-color-comment-green: #87db7c;
+  --font-color-hover-yellow: yellow;
+  --font-color-hyperlink-purple: rgb(192, 75, 255);
+  --font-color-blue-tint: rgb(145, 160, 247);
+  --font-color-white: white;
+  --font-family-default: Verdana, Geneva, Tahoma, sans-serif;
+  --box-shadow-pink: rgba(232, 102, 236, 1);
+  --transition-easy: all 0.2s ease-in-out;
+  --dashed-border: 2px dashed var(--font-color-white);
+  --side-margins-computer: 60px;
+  --side-margins-tablet: 40px;
+  --side-margins-mobile: 15px;
+}
+
+/* General Selector */
+* {
+  line-height: 18px;
+}
+
+/* Element Selectors */
+body {
+  color: var(--font-color-default-pink);
+  background-color: var(--background-blueberry);
+  font-family: var(--font-family-default);
+  /* Side margins are set for the entire project here, and adjust at different media sizes */
+  margin-left: var(--side-margins-computer);
+  margin-right: var(--side-margins-computer);
+}
+
+header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: xx-large;
+  margin-bottom: 5px;
+  line-height: 35px;
+}
+
+header p {
+  color: var(--font-color-white);
+}
+
+a {
+  color: var(--font-color-hyperlink-purple);
+}
+
+a:hover {
+  color: var(--font-color-hover-yellow);
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+li {
+  margin: 10px 0px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+/* Format Pre element to fit theme & for better visualization in narrow cards */
+pre {
+  color: var(--font-color-white);
+  font-family: monospace;
+  font-size: large;
+  line-height: 20px;
+  margin: 5px;
+  padding: 9px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+xmp {
+  white-space: pre-wrap;
+}
+
+footer {
+  display: grid;
+  font-size: small;
+  grid-template-columns: 40%;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+footer div {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: var(--dashed-border);
+  border-radius: 2px;
+}
+
+/* Class Selectors */
+.columns {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  row-gap: 30px;
+  column-gap: 1%;
+  /* margin: 30px var(--side-margins-computer) 10px var(--side-margins-computer); */
+  justify-content: center;
+}
+
+.card {
+  flex-direction: column;
+  padding: 5px;
+  border: 2px dashed var(--font-color-white);
+  border-radius: 2px;
+}
+
+.card,
+.card-header,
+footer div {
+  transition: var(--transition-easy);
+}
+
+.card-header {
+  margin-top: -19px;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 70%;
+  padding: 3px;
+  font-size: large;
+  border: 1px solid var(--font-color-white);
+  border-radius: 3px;
+  font-size: 20px;
+  background-color: var(--background-blueberry);
+}
+
+.card:hover,
+footer:hover div,
+.card:hover .card-header {
+  box-shadow: inset 0px 0px 8px var(--box-shadow-pink),
+    0 0 15px var(--box-shadow-pink);
+}
+
+.card-content {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.code-description {
+  margin: 12px 5px;
+}
+
+.code-description p:first-child {
+  margin-top: 0;
+}
+
+.code-box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  margin: 12px 5px;
+  vertical-align: middle;
+  border-radius: 8px;
+  background-image: linear-gradient(#6b4775, #a055a6);
+}
+
+.hover-for-info {
+  position: relative;
+  cursor: pointer;
+  color: var(--font-color-blue-tint);
+}
+
+.hover-for-info:hover {
+  color: var(--font-color-hover-yellow);
+}
+
+.hover-for-info:hover::after {
+  position: absolute;
+  background-color: var(--background-blueberry);
+  left: 0px;
+  bottom: 24px;
+  min-width: 200px;
+  border: 2px var(--font-color-white) solid;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 80%;
+  z-index: 1;
+}
+
+.inline-comment {
+  color: var(--font-color-comment-green);
+}
+
+/* Id Selectors */
+/* 
+    Note: These are used exclusively to provide
+    tooltip text in this document 
+*/
+
+#hover-over-suggestion::before {
+  content: "Hover over";
+}
+
+#blue-tint:hover::after {
+  content: "Like this!";
+}
+
+#final-product:hover::after {
+  content: "Hooray!";
+}
+
+#tooltip-z-index:hover::after {
+  content: "This is a safety to make sure that the tooltip appears in *front* of any other elements, rather than behind them";
+}
+
+#tooltip-min-width:hover::after {
+  content: "This prevents tooltips from getting taller and thinner the more content it has";
+}
+
+#position-absolute:hover::after {
+  content: "This lets the box we create not be confined by the sizing of the boxes it's in. Critical component right here";
+}
+
+#comma-in-combinator:hover::after {
+  content: 'The comma between the two class selectors here just means "apply the following CSS to all of the listed classes" - it\'t not a combinator ';
+}
+
+#tablet-size:hover::after {
+  content: "This is an approximate size for tables. If the viewport is over this width this css won't be applied";
+}
+
+#mobile-size:hover::after {
+  content: "This is an approximate size for mobile devices. If the viewport is over this width this css won't be applied";
+}
+
+#transition:hover::after {
+  content: "Transitions are pretty complicated, so this is a shorthand. The mdn web docs are a good source for details";
+}
+
+#display-grid-1:hover::after {
+  content: "This sets up the grid, allowing other grid properties to be applied";
+}
+
+#grid-template-columns-1:hover::after {
+  content: "This establishes that we want three columns, each at 33% (one third) of the parent element's space";
+}
+
+#justify-content-1:hover::after {
+  content: "Center aligns the content of each row, creating equal space on the left and right of the page";
+}
+
+#row-gap-1:hover::after {
+  content: "Makes a gap between each row so things feel more spacious";
+}
+
+#media-query-1:hover::after {
+  content: "With media queries we can set css values when the view port (screen you're viewing this on) changes size";
+}
+
+#linear-gradient:hover::after {
+  content: 'Just google "linear-gradient css" for more info on how these work and can be configured';
+}
+
+#combinator-example-1:hover::after {
+  content: "Here we use the empty space combinator to apply the css of all child elements of the .card class that have the .card-header class, but only when the .card class is being hovered over";
+}
+
+#box-shadow-inset:hover::after {
+  content: "Here, we're saying: first, this is an inset shadow. Then, the subsequent values are offset-x, offset-y, and blur-radius. Finally we declare the shadow color";
+}
+
+#box-shadow-regular:hover::after {
+  content: "No inset here, so it's just offset-x, offset-y, blur radius, then color. Note that with long assignments like this, the proper formatting is to break into a new line for each value, with commas in between";
+}
+
+#self-referencial:hover::after {
+  content: "Yup, these ones 😉";
+}
+
+#after-pseudo-element:hover::after {
+  content: "::after is a pseudo-element that adds non-html data to the page after the element it's attached to. We use this to create the tooltip box via, as outlined in the lines below";
+}
+
+#position-relative:hover::after {
+  content: "This creates the container that the tooltip box will need to relate to with it's absolute position";
+}
+
+#tooltip-left:hover::after {
+  content: "Determines the distance of this box from the left-most side of the hosting element. If this wasn't here, the default would put this after element the end of the hosting element";
+}
+
+#tooltip-bottom:hover::after {
+  content: "This determines the distance of this box from the bottom of the hosting element";
+}
+
+#hover-for-info-tip:hover::after {
+  content: "By implementing this class we get the standard tooltip behavior, but the tooltip box doesn't have any text in it by default. That's where the Id comes in";
+}
+
+#final-product-tip:hover::after {
+  content: "Here we establish a unique identifier to this tooltip text, which we can then target in our CSS";
+}
+
+#final-product-hover-after:hover::after {
+  content: "By using :hover::after on the same element that has the class hover-for-info:hover::after, we ensure that what we're hitting the same target";
+}
+
+#content-hooray:hover::after {
+  content: "The 'content' property assigns a value to an element's content box, which in this case gives our tooltip its text";
+}
+
+#negative-top-margin:hover::after {
+  content: "Giving a negative margin makes the box in question overlap in the negative direction";
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  body {
+    margin-left: var(--side-margins-tablet);
+    margin-right: var(--side-margins-tablet);
+  }
+
+  footer {
+    grid-template-columns: 80%;
+  }
+
+  .columns {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    margin-left: var(--side-margins-mobile);
+    margin-right: var(--side-margins-mobile);
+  }
+
+  header p {
+    text-align: left;
+  }
+
+  footer {
+    grid-template-columns: 100%;
+  }
+
+  .columns {
+    grid-template-columns: 101%;
+  }
+
+  #hover-over-suggestion::before {
+    content: "Tap";
+  }
+}
